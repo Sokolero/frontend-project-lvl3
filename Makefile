@@ -2,10 +2,11 @@ install:
 	npm ci
 
 start:
-	npm start
+	npx webpack serve --open
 
 build:
-	npm run build
+	rm -rf build
+	NODE_ENV=production npx webpack
 
 lint:
 	npx eslint src/
