@@ -22,7 +22,9 @@
   "jest": {
     "verbose": true,
     "testEnvironment": "jsdom",
-    "moduleDirectories": ["node_modules"],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
@@ -59,6 +61,8 @@
     "i18n": "^0.15.0",
     "i18next": "^21.8.9",
     "on-change": "^4.0.1",
+    "uuid-v4": "^0.1.0",
+    "uuidv4": "^6.2.13",
     "yup": "^0.32.11"
   }
 }

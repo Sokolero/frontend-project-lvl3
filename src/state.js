@@ -9,6 +9,30 @@ export default (initialState) => {
       errors: '',
       fetchingStatus: null
     },
-    feeds: [] // {url, body}
+    feeds: [], // {url, body}
+    posts: [],
+    modal: {
+      itemId: null,
+      feedId: null
+    }
   }
 };
+
+// feeds: [
+//   {
+//     id: uuid(),
+//     title: '',
+//     description: '',
+//     url: ''
+//   }
+// ]
+//
+// posts: [
+//   {
+//     feedId,
+//     id: uuid(),
+//     title: '',
+//     description: '',
+//     link: ''
+//   }
+// ]
