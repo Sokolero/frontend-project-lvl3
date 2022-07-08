@@ -1,4 +1,4 @@
-# [RSS агрегатор ](https://frontend-project-lvl3-ochre-eight.vercel.app/)
+# [RSS агрегатор ](https://frontend-project-lvl3-nm8xpc7v5-sokolero.vercel.app/)
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Sokolero/frontend-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/Sokolero/frontend-project-lvl3/actions)
