@@ -11,8 +11,8 @@ i18next.init({
       translation: {
         "fetchSuccess": "RSS успешно загружен",
         "fetchFailed": "Ссылка должна быть валидными URL",
-        "oneFeedBlockTitle": "Посты",
-        "feedsBlockTitle": "Фиды"
+        "postsHeader": "Посты",
+        "feedsHeader": "Фиды"
       }
     }
   }
@@ -23,9 +23,9 @@ const createPostsList = (posts) => {
   return posts
     .map(post => {
       return `
-        <li class="list-group-item">
+        <li class="list-group-item d-flex justify-content-between">
           <a href=${post.link}>${post.title}</a>
-          <button type="button" class="btn btn-primary" data-feed-id=${post.feedId} data-id=${post.id} data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="button" class="btn btn-outline-primary" data-feed-id=${post.feedId} data-id=${post.id} data-bs-toggle="modal" data-bs-target="#exampleModal">
             Просмотр
           </button>
         </li>
@@ -48,9 +48,9 @@ const createFeedsList = (feeds) => {
 }
 
 
-// отрендерить состояние в дом
+// render-функция
 export default (object, elements, path, value) => {
-  console.log('in render', path)
+
   // ----
   if (path === 'form.input') {
     elements.input.value = value;
@@ -59,13 +59,18 @@ export default (object, elements, path, value) => {
   if (path === 'form.errors') {
     if (!value) {
       elements.input.classList.remove('border-danger')
+      elements.fetchingStatus.classList.remove('text-danger')
+      elements.fetchingStatus.classList.add('text-success')
     } else {
       elements.input.classList.add('border-danger')
+      elements.fetchingStatus.classList.remove('text-success')
+      elements.fetchingStatus.classList.add('text-danger')
     }
   }
   // ----
   if (path === 'form.fetchingStatus' && value === 'success') {
     elements.fetchingStatus.textContent = i18next.t('fetchSuccess')
+
   }
   // ----
   if (path === 'form.fetchingStatus' && value === 'failure') {
@@ -73,17 +78,20 @@ export default (object, elements, path, value) => {
   }
   // ---- feeds ----------------------------------------------------------------
   if (path === 'feeds') {
-    const { feeds } = elements;
+    const { feeds, feedsHeader } = elements;
+    feedsHeader.textContent = i18next.t('feedsHeader')
     const container = feeds.querySelector('ul')
     container.innerHTML = createFeedsList(value)
   }
 
   // --- posts -----------------------------------------------------------------
   if (path === 'posts') {
-    console.log("this: ", object)
-    const { feedBody } = elements;
-    feedBody.innerHTML = createPostsList(value)
-    feedBody
+    const { feedBody, postsHeader } = elements;
+    // console.log(elements)
+    postsHeader.textContent = i18next.t('postsHeader')
+    const container = feedBody.querySelector('ul')
+    container.innerHTML = createPostsList(value)
+    container
       .querySelectorAll('button')
       .forEach(btn => btn.addEventListener('click', changeModalData(object)))
   }

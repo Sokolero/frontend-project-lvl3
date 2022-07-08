@@ -15,13 +15,17 @@ const getAppElements = (appContainer) => {
   const submit = appContainer.querySelector('button[type=submit]')
   const feedBody = appContainer.querySelector('.feed-body')
   const feeds = appContainer.querySelector('.feeds')
+  const postsHeader = appContainer.querySelector('.posts-header')
+  const feedsHeader = appContainer.querySelector('.feeds-header')
   return {
     input,
     form,
     fetchingStatus,
     submit,
     feedBody,
-    feeds
+    feeds,
+    postsHeader,
+    feedsHeader
   }
 }
 
